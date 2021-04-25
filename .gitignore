@@ -1,5 +1,6 @@
 __pycache__/
 venv/
+test/
 
 *.pyc
 .bojan_env
