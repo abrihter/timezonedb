@@ -8,7 +8,7 @@ Full timezonedb.com API reference can be found [here](https://timezonedb.com/api
 
 ## HOW TO USE
 
-### TO USE - list timezone
+### list timezone [reference](https://timezonedb.com/references/list-time-zone)
 
 List out all available time zones supported by TimeZoneDB.
 
@@ -22,7 +22,7 @@ res = api.list_time_zone(response_format="json")
 print(res)
 ```
 
-### TO USE - get timezone
+### get timezone [reference](https://timezonedb.com/references/get-time-zone)
 
 Get local time of a city by its name, time zone, latitude & longtiude, or IP address.
 
@@ -56,7 +56,7 @@ print(res)
 ```
 
 
-### TO USE - convert timezones
+### convert timezones [reference](https://timezonedb.com/references/convert-time-zone)
 
 Convert timestamp between two different time zone.
 
