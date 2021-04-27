@@ -7,6 +7,10 @@ Wrapper for [timezonedb.com](https://timezonedb.com) API
 Full timezonedb.com API reference can be found [here](https://timezonedb.com/api)
 
 ## HOW TO USE
+Class ***TimezoneDBAPI*** have one mandatory and 2 optional arguments
+- **key** - will represent your timezonedb API key
+- **api_type** - can be set to *vip* or *api* (default to *vip*) that is used to set access level for API (vip is payed/premium access)
+- **api_version** - can be used to set API version to use (default to 2.1)
 
 ### list timezone [reference](https://timezonedb.com/references/list-time-zone)
 
