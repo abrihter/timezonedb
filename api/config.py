@@ -2,11 +2,16 @@
 config file
 '''
 
+__author__ = "Bojan"
+__license__ = "MIT"
+__maintainer__ = "Bojan"
+__status__ = "Production"
+
 class Config:
     '''config'''
     endpoint = "timezonedb.com"
 
-    versions = {
+    api_types = {
         "api": {
             "prefix": "api",
         },
@@ -14,6 +19,8 @@ class Config:
             "prefix": "vip",
         },
     }
+
+    api_versions = ["2.1"]
 
     endpoints = {
         "list-time-zone": {
