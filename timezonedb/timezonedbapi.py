@@ -8,7 +8,7 @@ __maintainer__ = "Bojan"
 __status__ = "Production"
 
 import requests
-from api.config import Config
+from timezonedb.config import Config
 
 class TimezoneDBAPIGeneralException(Exception):
     '''custom exception'''
