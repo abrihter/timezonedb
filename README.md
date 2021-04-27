@@ -15,6 +15,7 @@ List out all available time zones supported by TimeZoneDB.
 from timezonedb import TimezoneDBAPI
 
 #get timezones
+api = TimezoneDBAPI(api_key={TIMEZONEDB_API_KEY})
 res = api.list_time_zone(response_format="json")
 print(res)
 ```
@@ -28,6 +29,7 @@ Get local time of a city by its name, time zone, latitude & longtiude, or IP add
 from timezonedb import TimezoneDBAPI
 
 #get timezones
+api = TimezoneDBAPI(api_key={TIMEZONEDB_API_KEY})
 res = api.get_time_zone(
     response_format="json",
     by="position",
@@ -41,6 +43,7 @@ print(res)
 from timezonedb import TimezoneDBAPI
 
 #get timezones
+api = TimezoneDBAPI(api_key={TIMEZONEDB_API_KEY})
 res = api.get_time_zone(
     response_format="json",
     by="city",
@@ -60,6 +63,7 @@ Convert timestamp between two different time zone.
 from timezonedb import TimezoneDBAPI
 
 #get timezones
+api = TimezoneDBAPI(api_key={TIMEZONEDB_API_KEY})
 res = api.convert_time_zone(
     response_format="json",
     from_zone="America/Los_Angeles",
