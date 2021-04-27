@@ -44,4 +44,104 @@ class Config:
                 },
             }
         },
+        "get-time-zone": {
+            "params": {
+                "key": {
+                    "required": True,
+                },
+                "format": {
+                    "required": False,
+                    "options": ["xml", "json"],
+                    "default": "xml",
+                },
+                "callback": {
+                    "required": False,
+                },
+                "fields": {
+                    "required": False,
+                    "fields": ["countryCode", "countryName", "regionName",
+                        "cityName", "zoneName", "abbreviation", "gmtOffset",
+                        "dst", "zoneStart", "zoneEnd", "nextAbbreviation",
+                        "timestamp", "formatted"],
+                    "default": \
+                        "countryCode,countryName,regionName,cityName,zoneName,abbreviation,gmtOffset,dst,zoneStart,zoneEnd,nextAbbreviation,timestamp,formatted",
+                },
+                "by": {
+                    "required": True,
+                    "options": ["zone", "position", "city", "ip"],
+                },
+                "zone": {
+                    "required": False,
+                    "required_field": "by",
+                    "required_by": ["zone"],
+                },
+                "lat": {
+                    "required": False,
+                    "required_field": "by",
+                    "required_by": ["position"],
+                },
+                "lng": {
+                    "required": False,
+                    "required_field": "by",
+                    "required_by": ["position"],
+                },
+                "country": {
+                    "required": False,
+                    "required_field": "by",
+                    "required_by": ["city"],
+                },
+                "region": {
+                    "required": False,
+                },
+                "city": {
+                    "required": False,
+                    "required_field": "by",
+                    "required_by": ["city"],
+                },
+                "ip": {
+                    "required": False,
+                    "required_field": "by",
+                    "required_by": ["ip"],
+                },
+                "page": {
+                    "required": False,
+                },
+                "time": {
+                    "required": False,
+                },
+            },
+        },
+        "convert-time-zone": {
+            "params": {
+                "key": {
+                    "required": True,
+                },
+                "format": {
+                    "required": False,
+                    "options": ["xml", "json"],
+                    "default": "xml",
+                },
+                "callback": {
+                    "required": False,
+                },
+                "fields": {
+                    "required": False,
+                    "fields": ["fromZoneName", "fromAbbreviation",
+                        "fromTimestamp", "toZoneName", "toAbbreviation",
+                        "toTimestamp", "toFormatted", "offset"],
+                    "default": \
+                        "fromZoneName,fromAbbreviation,fromTimestamp,toZoneName,toAbbreviation,toTimestamp,toFormatted,offset",
+                },
+                "from": {
+                    "required": True,
+                },
+                "to": {
+                    "required": True,
+                },
+                "time": {
+                    "required": False,
+                },
+            },
+        },
     }
+
