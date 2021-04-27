@@ -29,10 +29,12 @@ class TimezoneDBAPI:
         '''
         self.config = Config()
 
-        if not api_type in self.config.versions.keys():
+        if not api_type in self.config.api_types.keys():
             raise TimezoneDBAPIGeneralException("API type not valid")
         if not api_key:
             raise TimezoneDBAPIGeneralException("You need to provide API key")
+        if not api_version in self.config.api_versions:
+            raise TimezoneDBAPIGeneralException("API type not valid")
 
         self.api_key = api_key
         self.api_type = api_type
@@ -113,10 +115,15 @@ class TimezoneDBAPI:
                 return res.json()
         return res.content
 
+    def __generic_full_api_call(self, endpoint, params):
+        self.__check_params(endpoint, params)
+        url = self.__build_url(endpoint)
+        res = self.__make_call(url, params)
+        return self.__parse_result(res, params)
+
     def list_time_zone(self, response_format=None, callback=None, fields=None,
             country=None, zone=None):
         '''list timezone'''
-        endpoint = "list-time-zone"
         params = {
             "key": self.api_key,
             "format": response_format,
@@ -125,16 +132,12 @@ class TimezoneDBAPI:
             "country": country,
             "zone": zone,
         }
-        self.__check_params(endpoint, params)
-        url = self.__build_url(endpoint)
-        res = self.__make_call(url, params)
-        return self.__parse_result(res, params)
+        return self.__generic_full_api_call("list-time-zone", params)
 
     def get_time_zone(self, response_format=None, callback=None, fields=None,
             by=None, zone=None, lat=None, lng=None, country=None, region=None,
             city=None, ip=None, page=None, time=None):
         '''get timezone'''
-        endpoint = "get-time-zone"
         params = {
             "key": self.api_key,
             "format": response_format,
@@ -151,15 +154,11 @@ class TimezoneDBAPI:
             "page": page,
             "time": time,
         }
-        self.__check_params(endpoint, params)
-        url = self.__build_url(endpoint)
-        res = self.__make_call(url, params)
-        return self.__parse_result(res, params)
+        return self.__generic_full_api_call("get-time-zone", params)
 
     def convert_time_zone(self, response_format=None, callback=None,
             fields=None, from_zone=None, to_zone=None, time=None):
         '''get timezone'''
-        endpoint = "convert-time-zone"
         params = {
             "key": self.api_key,
             "format": response_format,
@@ -169,7 +168,4 @@ class TimezoneDBAPI:
             "to": to_zone,
             "time": time,
         }
-        self.__check_params(endpoint, params)
-        url = self.__build_url(endpoint)
-        res = self.__make_call(url, params)
-        return self.__parse_result(res, params)
+        return self.__generic_full_api_call("convert-time-zone", params)
